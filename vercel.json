@@ -1,8 +1,0 @@
-{
-    "crons":[
-        {
-            "path": "/api/blocks/reminder",
-            "schedule": "*/1 * * * *"
-        }
-    ]
-}

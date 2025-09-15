@@ -1,0 +1,17 @@
+name: Reminder Cron
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # every 5 minutes
+  workflow_dispatch:        # allows manual trigger from Actions tab
+
+jobs:
+  ping-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call reminder endpoint
+        run: |
+          echo "Pinging reminder endpoint…"
+          status=$(curl -s -o /dev/stderr -w "%{http_code}" \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            https://quiet-hours-09/api/blocks/reminder)
+          echo "HTTP status: $status"

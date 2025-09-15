@@ -3,7 +3,14 @@ import dbConnect from "@/lib/mongoose";
 import Block from "@/models/Block";
 import { transporter } from "@/lib/mailer";
 
-export async function GET() {
+export async function GET(req: Request) {
+
+    const secret = req.headers.get("x-cron-secret");
+    if (secret !== process.env.CRON_SECRET) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+
     await dbConnect();
     const now = new Date();
     const blocks = await Block.find({
