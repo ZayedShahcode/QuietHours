@@ -58,12 +58,10 @@ export async function POST(req: NextRequest){
             reminderSent: false
         });
         return NextResponse.json({block: doc},{status: 201});
-        // @ts-ignore
-    } catch(err:any){
-        if(err.code === 11000){
-            return NextResponse.json({error: err.message || "Duplicate Block for this user"},{status: 400});
-        }
-        return NextResponse.json({error: 'Database Errro', details: err.message || err},{status: 500});
+    } 
+ 
+    catch(err){
+        return NextResponse.json({error: 'Database Error', details: err instanceof Error ? err.message : String(err)},{status: 500});
     }
 }
     
