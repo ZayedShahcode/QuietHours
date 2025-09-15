@@ -13,5 +13,5 @@ jobs:
           echo "Pinging reminder endpoint…"
           status=$(curl -s -o /dev/stderr -w "%{http_code}" \
             -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
-            https://quiet-hours-09/api/blocks/reminder)
+            https://quiet-hours-09.vercel.app/api/blocks/reminder)
           echo "HTTP status: $status"
