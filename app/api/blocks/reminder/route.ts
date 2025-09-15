@@ -30,7 +30,7 @@ export async function GET(req: Request) {
             b.reminderSentAt = new Date();
             await b.save();
             sentCount++;
-        } catch (err) {
+        } catch {
             // Optionally log error or handle failed email
         }
     }

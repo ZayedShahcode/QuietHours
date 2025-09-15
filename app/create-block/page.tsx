@@ -1,6 +1,6 @@
 'use client'
 
-import {supabase} from "@/lib/supabaseServer";
+// import {supabase} from "@/lib/supabaseServer";
 import BlockForm from "./BlockForm";
 import BlockList from "./BlockList";
 import { useState } from "react";

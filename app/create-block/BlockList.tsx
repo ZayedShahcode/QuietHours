@@ -42,7 +42,7 @@ export default function BlockList({ blocks, setBlocks }: BlockListProps) {
         if (res.ok) {
           const data = await res.json();
           // convert dates to strings
-          const blocksWithStrings: Block[] = (data.blocks || []).map((b: any) => ({
+          const blocksWithStrings: Block[] = (data.blocks || []).map((b: Block) => ({
             _id: b._id,
             startAt: b.startAt,
             endAt: b.endAt,

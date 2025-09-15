@@ -58,7 +58,8 @@ export async function POST(req: NextRequest){
             reminderSent: false
         });
         return NextResponse.json({block: doc},{status: 201});
-    } catch(err: any){
+        // @ts-ignore
+    } catch(err:any){
         if(err.code === 11000){
             return NextResponse.json({error: err.message || "Duplicate Block for this user"},{status: 400});
         }
