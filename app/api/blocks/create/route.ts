@@ -7,6 +7,7 @@ import {supabase} from "@/lib/supabaseServer"
 export async function POST(req: NextRequest){
     const authHeader = req.headers.get("Authorization");
     const token =  authHeader?.split(" ")[1];
+    
     if(!token){
         return NextResponse.json({error: "Unauthorized! Missing Token"}, {status: 401});
     }
